@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signin</title>
+</head>
+<body class="bg">
+
+    <div class="form-box">
+        <form action="/signin/   " method="post">
+             {% csrf_token %}
+            <h1>Send A Note</h1>
+<!--            <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">-->
+            <hr>
+            <div>
+                <label for="">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter your Username"></div>
+            <br>
+            <div>
+                <label for="">Passward</label>
+                <input type="password" name="pass1" id="pass1" placeholder="Enter your Passward"></div>
+            <br>
+            <div container>
+                <button type="submit" value="SIGN-UP" id="signup-btn"><a href="/signup">SIGN-UP</a></button>
+                <button type="submit" value="LOG-IN" id="signin-btn"><a href="/signin">LOG-IN</a></button>
+            </div>
+
+        </form>
+
+        <div id="footer" class="bottom container">
+            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
