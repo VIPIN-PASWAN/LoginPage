@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -17,30 +17,44 @@
 </head>
 
 <body class="bg">
-
-    <div class="form-box">
-        <form action="" method="post">
-             {% csrf_token %}
-            <h1>Send A Note</h1>
-            <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">
-            <hr>
-            <div><input type="email" name="user-email" id="email" placeholder="Email"></div>
-            <br>
-            <div><input type="password" name="user-passward" id="passward" placeholder="Passward"></div>
-            <br>
-            <div container>
-                <button type="submit" value="SIGN-UP" id="signup-btn"><a href="/signup">SIGN-UP</a></button>
-                <button type="submit" value="LOG-IN" id="login-btn"><a href="/login">LOG-IN</a></button>
-            </div>
-
-        </form>
-
-        <div id="footer" class="bottom container">
-            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
-        </div>
-
+   {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dissmiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+   {% endfor %}
 
+     {% if request.user.is_authenticated %}
+        <h2>Welcome...{{fname}}</h2>
+        <h4>You're successfully logged in.</h4>
+        <div container>
+            <button type="submit" value="SIGN-OUT" id="signout-btn"><a href="/signout">SIGN-OUT</a></button>
+        </div>
+     {% else %}
+        <div class="form-box">
+            <form action="" method="post">
+                 {% csrf_token %}
+                <h1>Send A Note</h1>
+                <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">
+                <hr>
+                <div><input type="email" name="email" id="email" placeholder="Email"></div>
+                <br>
+                <div><input type="password" name="pass1" id="pass1" placeholder="Passward"></div>
+                <br>
+                <div container>
+                    <button type="submit" value="SIGN-UP" id="signup-btn"><a href="/signup">SIGN-UP</a></button>
+                    <button type="submit" value="LOG-IN" id="signin-btn"><a href="/signin">LOG-IN</a></button>
+                </div>
+
+            </form>
+
+            <div id="footer" class="bottom container">
+                <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
+            </div>
+        </div>
+     {% endif %}
 
 
     <script src="js/script.js"></script>
