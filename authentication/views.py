@@ -1,8 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from LOGINPAGE import settings
+# from django.conf import settings
 
 
 def home(request):
@@ -18,6 +21,26 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
+        if User.objects.filter(username=username):
+            messages.error(request, "Username already exist! Please try some other username.")
+            return redirect('home')
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email Already Registered!!")
+            return redirect('home')
+
+        if len(username) > 20:
+            messages.error(request, "Username must be under 20 characters!!")
+            return redirect('home')
+
+        if pass1 != pass2:
+            messages.error(request, "Passwords didn't matched!!")
+            return redirect('home')
+
+        if not username.isalnum():
+            messages.error(request, "Username must be Alpha-Numeric!!")
+            return redirect('home')
+
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
         myuser.last_name = lname
@@ -25,6 +48,16 @@ def signup(request):
         myuser.save()
 
         messages.success(request, "Yours Account has been successfully created.")
+
+        # WELCOME EMAIL
+        subject = "Welcome to COMMUNITI.CO !"
+        message = "Hello " + myuser.first_name + "!! \n" + "We are glad to welcome you.\n\n We have sent you a " \
+                                                           "confirmation email, please confirm your email address in " \
+                                                           "order to activate your account.\n\n Thank You.\n Stone " \
+                                                           "Martin "
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [myuser.email]
+        send_mail(subject, message, from_email, to_list, fail_silently=True)
 
         return redirect('signin')
 
@@ -52,5 +85,5 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    messages.success(request, "Loged out successfully !")
+    messages.success(request, "Logged out successfully !")
     return redirect('home')
