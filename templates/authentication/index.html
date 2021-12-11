@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communiti.co</title>
+<!--    &lt;!&ndash; css file &ndash;&gt;-->
+<!--    <link rel="stylesheet" href=".\css\style.css">-->
+    <!-- bootstrap 4.6 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+
 </head>
-<body>
-$END$
+
+<body class="bg">
+
+    <div class="form-box">
+        <form action="" method="post">
+             {% csrf_token %}
+            <h1>Send A Note</h1>
+            <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">
+            <hr>
+            <div><input type="email" name="user-email" id="email" placeholder="Email"></div>
+            <br>
+            <div><input type="password" name="user-passward" id="passward" placeholder="Passward"></div>
+            <br>
+            <div container>
+                <button type="submit" value="SIGN-UP" id="signup-btn"><a href="/signup">SIGN-UP</a></button>
+                <button type="submit" value="LOG-IN" id="login-btn"><a href="/login">LOG-IN</a></button>
+            </div>
+
+        </form>
+
+        <div id="footer" class="bottom container">
+            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
+        </div>
+
+    </div>
+
+
+
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>signup</title>
 </head>
-<body>
-$END$
+
+<body class="bg">
+
+    <div class="form-box">
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            <h1>SIGN-UP</h1>
+
+            <div><label for="">Username</label>
+            <input type="text" id="username" name="username" placeholder="Create a username" required></div>
+            <br>
+
+            <div><label for="">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name" required></div>
+            <br>
+
+            <div><label for="">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter your last name" ></div>
+            <br>
+
+            <div><label for="">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required></div>
+            <br>
+
+            <div><label for="">Passward</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Enter your passward" required></div>
+            <br>
+
+            <div><label for="">Confirm your passward</label>
+            <input type="password" id="pass2" name="pass2" placeholder="Confirm your passward" required></div>
+            <br>
+
+<!--            <div><input type="email" name="user-email" id="email" placeholder="Email"></div>-->
+<!--            <br>-->
+<!--            <div><input type="password" name="user-passward" id="passward" placeholder="Passward"></div>-->
+<!--            <br>-->
+<!--            <div container>-->
+            <div>
+                <button type="submit" id="signup-btn">SIGN-UP</button>
+                <button type="submit" value="LOG-IN" id="login-btn"><a href="/login">LOG-IN</a></button>
+            </div>
+
+        </form>
+
+        <div id="footer" class="bottom container">
+            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
+        </div>
+
+    </div>
+
 </body>
 </html>
