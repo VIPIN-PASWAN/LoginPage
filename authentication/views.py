@@ -55,14 +55,15 @@ def signup(request):
         myuser.is_active = False
         myuser.save()
 
-        messages.success(request, "Yours Account has been successfully created.")
+        messages.success(request, "Your Account has been created successfully!! Please check your email to confirm "
+                                  "your email address in order to activate your account.")
 
         # WELCOME EMAIL
         subject = "Welcome to COMMUNITI.CO !"
-        message = "Hello " + myuser.first_name + "!! \n" + "We are glad to welcome you.\n\n We have sent you a " \
-                                                           "confirmation email, please confirm your email address in " \
-                                                           "order to activate your account.\n\n Thank You.\n Stone " \
-                                                           "Martin "
+        message = "Hello " + myuser.first_name + " !! \n" + "We are glad to welcome you.\n\n We have sent you a " \
+                                                            "confirmation email, please confirm your email address in" \
+                                                            " order to activate your account.\n\n Thank You.\n Stone " \
+                                                            "Martin "
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
@@ -90,32 +91,6 @@ def signup(request):
 
     return render(request, "authentication/signup.html")
 
-
-def signin(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        pass1 = request.POST['pass1']
-
-        user = authenticate(username=username, password=pass1)
-
-        if user is not None:
-            login(request, user)
-            fname = user.first_name
-            return render(request, "authentication/index.html", {"fname": fname})
-
-        else:
-            messages.error(request, "BAD CREDENTIALS !!")
-            return redirect('home')
-
-    return render(request, "authentication/signin.html")
-
-
-def signout(request):
-    logout(request)
-    messages.success(request, "Logged out successfully !")
-    return redirect('home')
-
-
 def activate(request, uidb64, token):
     try:
         # uid = force_text(urlsafe_base64_decode(uidb64))
@@ -132,3 +107,28 @@ def activate(request, uidb64, token):
 
     else:
         return render(request, 'activation_failed.html')
+
+def signin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        pass1 = request.POST['pass1']
+
+        user = authenticate(username=username, password=pass1)
+
+        if user is not None:
+            login(request, user)
+            fname = user.first_name
+            messages.success(request, "Logged In Successfully !!")
+            return render(request, "authentication/index.html", {"fname": fname})
+
+        else:
+            messages.error(request, "BAD CREDENTIALS !!")
+            return redirect('home')
+
+    return render(request, "authentication/signin.html")
+
+
+def signout(request):
+    logout(request)
+    messages.success(request, "Logged out successfully !!")
+    return redirect('home')
