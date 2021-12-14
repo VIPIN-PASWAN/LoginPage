@@ -6,9 +6,10 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode
-from django.utils.encoding import force_bytes, force_text
-from . tokens import generate_token
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes  # , force_text
+from .tokens import generate_token
+
 from LOGINPAGE import settings
 
 
@@ -66,7 +67,7 @@ def signup(request):
         to_list = [myuser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
 
-        # Email Address Confermation Email
+        # Email Address Confirmation Email
 
         current_site = get_current_site(request)
         email_subject = "Confirmation email from COMMUNITI.CO !"
@@ -113,3 +114,21 @@ def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully !")
     return redirect('home')
+
+
+def activate(request, uidb64, token):
+    try:
+        # uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = urlsafe_base64_decode(uidb64)
+        myuser = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        myuser = None
+
+    if myuser is not None and generate_token.check_token(myuser, token):
+        myuser.is_active = True
+        myuser.save()
+        login(request, myuser)
+        return redirect('home')
+
+    else:
+        return render(request, 'activation_failed.html')
