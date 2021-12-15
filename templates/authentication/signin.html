@@ -1,46 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>signin</title>
-</head>
-<body class="bg">
+{% extends "authentication/index.html" %}
 
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong> {{ message }}
-        <button type="button" class="close" data-dissmiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-   {% endfor %}
-
-    <div class="form-box">
+{% block content %}
+<div class="form-box">
         <form action="/signin/" method="post">
             {% csrf_token %}
-            <h1>Send A Note</h1>
-<!--            <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">-->
+            <h1>LOGIN</h1>
+            <input type="button" value="SIGN-IN USING GOOGLE" id="google-btn">
             <hr>
             <div>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter your Username"></div>
+                <label for="username"></label>
+                <input type="text" name="username" id="username" placeholder="Username" required></div>
             <br>
             <div>
-                <label for="pass1">Passward</label>
-                <input type="password" name="pass1" id="pass1" placeholder="Enter your Passward"></div>
+                <label for="pass1"></label>
+                <input type="password" name="pass1" id="pass1" placeholder="Password" required></div>
             <br>
             <div class="container">
-                <button type="submit" value="SIGN-UP" id="signup-btn">SIGN-IN</button>
+                <a href="signup/"> <button type="button" value="SIGN-UP" id="signup-btn">SIGN-UP</button></a>
                 <button type="submit" value="LOG-IN" id="signin-btn">LOG-IN</button>
             </div>
 
         </form>
-
-        <div id="footer" class="bottom container">
-            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
-        </div>
-
-    </div>
-
-</body>
-</html>
+{% endblock %}

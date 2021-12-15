@@ -91,6 +91,7 @@ def signup(request):
 
     return render(request, "authentication/signup.html")
 
+
 def activate(request, uidb64, token):
     try:
         # uid = force_text(urlsafe_base64_decode(uidb64))
@@ -107,6 +108,7 @@ def activate(request, uidb64, token):
 
     else:
         return render(request, 'activation_failed.html')
+
 
 def signin(request):
     if request.method == 'POST':

@@ -1,66 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>signup</title>
-</head>
+{% extends "authentication/index.html" %}
 
-<body class="bg">
-
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        <strong>Message:</strong> {{ message }}
-        <button type="button" class="close" data-dissmiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-   {% endfor %}
-
+{% block content %}
     <div class="form-box">
         <form action="/signup/" method="post">{% csrf_token %}
-            <h1>SIGN-UP</h1>
+            <h1>CREATE ACCOUNT</h1>
+            <hr>
 
-            <div><label for="">Username</label>
+            <div><label for="username"></label>
             <input type="text" id="username" name="username" placeholder="Create a username" required></div>
             <br>
 
-            <div><label for="">First Name</label>
+            <div><label for="fname"></label>
             <input type="text" id="fname" name="fname" placeholder="Enter your first name" required></div>
             <br>
 
-            <div><label for="">Last Name</label>
+            <div><label for="lname"></label>
             <input type="text" id="lname" name="lname" placeholder="Enter your last name" ></div>
             <br>
 
-            <div><label for="">Email</label>
+            <div><label for="email"></label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required></div>
             <br>
 
-            <div><label for="">Password</label>
+            <div><label for="pass1"></label>
             <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required></div>
             <br>
 
-            <div><label for="">Confirm your password</label>
+            <div><label for="pass2"></label>
             <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" required></div>
             <br>
 
-<!--            <div><input type="email" name="user-email" id="email" placeholder="Email"></div>-->
-<!--            <br>-->
-<!--            <div><input type="password" name="user-passward" id="passward" placeholder="Passward"></div>-->
-<!--            <br>-->
-<!--            <div container>-->
             <div>
                 <button type="submit" id="signup-btn">SIGN-UP</button>
-                <button type="submit" value="SIGN-IN" id="signin-btn"><a href="/signin">LOG-IN</a></button>
+                <a href="/signin"><button type="button" value="SIGN-IN" id="signin-btn">LOG-IN</button></a>
             </div>
 
         </form>
-
-        <div id="footer" class="bottom container">
-            <p>A COMMUNITI.CO PROJECT / <a href="#">KNOW MORE</a></p>
-        </div>
-
-    </div>
-
-</body>
-</html>
+{% endblock %}
