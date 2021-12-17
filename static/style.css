@@ -9,7 +9,8 @@ a:hover{
 
 .bg {
   text-align: center;
-  background-color: rgb(246, 236, 252);
+  /* background-color: rgb(246, 236, 252); */
+  background: url("images/BG.jpg") fixed center;
 }
 
 
