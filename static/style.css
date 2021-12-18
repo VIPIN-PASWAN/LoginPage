@@ -1,6 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  color: #fff;
 }
 
 a:hover{
@@ -9,7 +10,6 @@ a:hover{
 
 .bg {
   text-align: center;
-  /* background-color: rgb(246, 236, 252); */
   background: url("images/BG.jpg") fixed center;
 }
 
@@ -53,6 +53,7 @@ input {
   /* border-radius: 25px; */
   padding: 0.62rem 6.25rem;
   box-shadow: 5px 5px 10px rgb(167, 167, 167);
+  text-color: #fff;
 }
 
 #google-btn:hover {

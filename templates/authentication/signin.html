@@ -1,7 +1,6 @@
 {% extends "authentication/index.html" %}
 
 {% block content %}
-<div class="form-box">
         <form action="/signin/" method="post">
             {% csrf_token %}
             <h1>LOGIN</h1>
@@ -19,6 +18,5 @@
                 <a href="/signup"> <button type="button" value="SIGN-UP" id="signup-btn">SIGN-UP</button></a>
                 <button type="submit" value="LOG-IN" id="signin-btn">LOG-IN</button>
             </div>
-
         </form>
 {% endblock %}
