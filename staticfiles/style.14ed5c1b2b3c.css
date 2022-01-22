@@ -1,0 +1,128 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  color: #fff;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.bg {
+  text-align: center;
+  background: url("images/BG.c60d0cab953d.jpg") fixed center;
+}
+
+
+#username, #email, #fname, #lname, #pass1, #pass2 {
+  font-size: 1.5rem;
+  padding: 0.31rem 3.75rem
+}
+
+#footer{
+   font-weight: 500;
+    margin-top: 1.56rem;
+}
+
+.form-box {
+  padding: 0.9rem 0rem 0.9rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:31.25rem;
+  background-color: #fff;
+  box-shadow: 10px 10px 15px rgb(207, 175, 238);
+}
+
+.form-box h1 {
+  font-size: 3rem;
+  padding: 0.31rem;
+  margin: 0px;
+}
+
+input {
+  text-align: center;
+  border: solid 2px;
+}
+
+#google-btn {
+  font-size: 1.2rem;
+  background: crimson;
+  border: 1px solid;
+  /* border-radius: 25px; */
+  padding: 0.62rem 6.25rem;
+  box-shadow: 5px 5px 10px rgb(167, 167, 167);
+  text-color: #fff;
+}
+
+#google-btn:hover {
+  background: rgb(255, 0, 51);
+}
+
+#signup-btn {
+  font-size: 1.2rem;
+  background: rgb(7, 140, 218);
+  border: 1px solid;
+  /* border-radius: 25px; */
+  padding: 0.31rem 3.12rem;
+  margin-right: 1.56rem;
+  box-shadow: 5px 5px 10px rgb(167, 167, 167);
+}
+
+#signup-btn:hover {
+  background: rgb(0, 162, 255);
+}
+
+#signin-btn {
+  font-size: 1.2rem;
+  background: rgb(10, 124, 0);
+  border: 1px solid;
+  /* border-radius: 25px; */
+  padding: 0.31rem 3.12rem;
+  margin-left: 1.56rem;
+  box-shadow: 5px 5px 10px rgb(167, 167, 167);
+}
+#signin-btn:hover {
+  background: rgb(16, 187, 0);
+}
+
+#signout-btn {
+  font-size: 1.2rem;
+  background: crimson;
+  border: 1px solid;
+  /* border-radius: 5px; */
+  padding: 0.31rem 0.5rem;
+  /* margin-left: 1.56rem; */
+  box-shadow: 5px 5px 10px rgb(167, 167, 167);
+}
+#signout-btn:hover {
+  background: rgb(255, 0, 51);
+}
+
+html hr {
+  width: 25%;
+  border: solid 0.31rem;
+  border-color: rgb(51, 51, 51);
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 1.5rem;
+  margin: 2.5rem auto;
+}
+
+
+/* @media break-point */
+
+@media (max-width: 991.98px) {
+  html{
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  html{
+    font-size: 0.6rem;
+  }
+}
+
